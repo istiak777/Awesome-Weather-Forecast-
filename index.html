@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EurOrbit — City Weather Forecast</title>
+  <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <p class="header-eyebrow">Live outlook</p>
+      <h1>City weather forecast</h1>
+    </div>
+  </div>
+
+  <div class="subheader">
+    <div class="subheader-inner">
+      <h2>European cities &amp; Dhaka</h2>
+      <p class="subheader-meta">Powered by <a href="https://www.7timer.info/" target="_blank" rel="noopener noreferrer">7Timer!</a></p>
+    </div>
+  </div>
+
+  <main class="page-shell">
+    <section class="controls-panel" aria-label="City selection">
+      <label for="city" class="control-label">Choose a city</label>
+      <div class="select-wrap">
+        <select id="city" class="city-select">
+          <option value="munich">Munich, Germany</option>
+          <option value="london">London, UK</option>
+          <option value="paris">Paris, France</option>
+          <option value="berlin">Berlin, Germany</option>
+          <option value="dhaka">Dhaka, Bangladesh</option>
+        </select>
+      </div>
+      <p class="hint">Pick a city to load live conditions, air quality, and a 7-day snapshot. Extended metrics use the Open-Meteo API (CORS-friendly in the browser).</p>
+    </section>
+
+    <section class="dashboard-panel" id="dashboard" aria-label="Current conditions and details">
+      <p class="dashboard-status" id="dashboard-status" role="status"></p>
+
+      <div class="now-hero" id="now-hero">
+        <p class="now-location" id="now-location">Select a city</p>
+        <p class="now-temp" id="now-temp"><span class="now-temp-value">—</span><span class="now-temp-unit">°C</span></p>
+        <p class="now-condition" id="now-condition">—</p>
+        <p class="now-feels" id="now-feels">Feels like —</p>
+        <p class="now-cloud" id="now-cloud">Cloud cover —</p>
+      </div>
+
+      <ul class="metrics-grid" id="metrics-grid" role="list"></ul>
+
+      <div class="detail-tabs" role="tablist" aria-label="Detail categories">
+        <button type="button" class="detail-tab is-active" role="tab" aria-selected="true" aria-controls="panel-overview" id="tab-overview" data-tab="overview">Overview</button>
+        <button type="button" class="detail-tab" role="tab" aria-selected="false" aria-controls="panel-air" id="tab-air" data-tab="air">Air quality</button>
+        <button type="button" class="detail-tab" role="tab" aria-selected="false" aria-controls="panel-wind" id="tab-wind" data-tab="wind">Wind</button>
+        <button type="button" class="detail-tab" role="tab" aria-selected="false" aria-controls="panel-sun" id="tab-sun" data-tab="sun">Sun &amp; UV</button>
+      </div>
+
+      <div class="tab-panels">
+        <div class="tab-panel is-active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+          <p class="panel-lead" id="panel-overview-text">Choose a city to see a short outlook.</p>
+          <ul class="mini-stats" id="overview-extras"></ul>
+        </div>
+        <div class="tab-panel" id="panel-air" role="tabpanel" aria-labelledby="tab-air" hidden>
+          <div class="air-summary" id="air-summary"></div>
+          <ul class="pollutant-grid" id="pollutant-grid" role="list"></ul>
+          <p class="chart-caption">European AQI — last 24 hours</p>
+          <div class="aqi-chart" id="aqi-chart" role="img" aria-label="Air quality index over 24 hours"></div>
+        </div>
+        <div class="tab-panel" id="panel-wind" role="tabpanel" aria-labelledby="tab-wind" hidden>
+          <ul class="wind-stats" id="wind-stats"></ul>
+        </div>
+        <div class="tab-panel" id="panel-sun" role="tabpanel" aria-labelledby="tab-sun" hidden>
+          <ul class="sun-stats" id="sun-stats"></ul>
+          <p class="panel-note" id="sun-note"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="forecast-section" aria-label="Seven day forecast">
+      <h2 class="section-title">7-day snapshot</h2>
+      <div class="forecast-container" id="forecast-container"></div>
+    </section>
+  </main>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

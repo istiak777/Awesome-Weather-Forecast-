@@ -1,0 +1,524 @@
+:root {
+  --bg-deep: #0a1628;
+  --bg-mid: #132a4a;
+  --accent: #3dd9c3;
+  --accent-soft: rgba(61, 217, 195, 0.15);
+  --text: #f0f4f8;
+  --text-muted: #94a3b8;
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-border: rgba(255, 255, 255, 0.12);
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Outfit", system-ui, sans-serif;
+  font-weight: 400;
+  color: var(--text);
+  text-align: center;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(61, 217, 195, 0.12), transparent 55%),
+    linear-gradient(165deg, var(--bg-deep) 0%, var(--bg-mid) 45%, #0d2137 100%);
+}
+
+.header {
+  position: relative;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2.5rem 1.25rem;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--bg-deep) 0%,
+    rgba(10, 22, 40, 0.82) 40%,
+    rgba(10, 22, 40, 0.35) 100%
+  );
+}
+
+.header-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+}
+
+.header-eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: clamp(1.85rem, 5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+}
+
+.subheader {
+  background: linear-gradient(90deg, rgba(61, 217, 195, 0.12), rgba(99, 102, 241, 0.08));
+  border-bottom: 1px solid var(--surface-border);
+  padding: 1.1rem 1.25rem;
+}
+
+.subheader-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.subheader h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.subheader-meta {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.subheader-meta a {
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61, 217, 195, 0.4);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.subheader-meta a:hover {
+  color: #5eeadb;
+  border-bottom-color: rgba(94, 234, 219, 0.7);
+}
+
+.page-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.controls-panel {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.5rem 1.35rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.control-label {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.select-wrap {
+  max-width: 22rem;
+  margin: 0 auto;
+}
+
+.city-select {
+  width: 100%;
+  padding: 0.75rem 2.75rem 0.75rem 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  background-color: rgba(15, 30, 52, 0.85);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%233dd9c3' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.city-select:hover,
+.city-select:focus {
+  outline: none;
+  border-color: rgba(61, 217, 195, 0.45);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.city-select option {
+  background: #0f1e34;
+  color: var(--text);
+}
+
+.hint {
+  margin: 1rem 0 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 0;
+}
+
+.forecast-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  width: 148px;
+  padding: 1rem 0.85rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.forecast-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(61, 217, 195, 0.25);
+}
+
+.forecast-card h3 {
+  margin: 0 0 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, rgba(61, 217, 195, 0.35), rgba(99, 102, 241, 0.25));
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.35rem;
+  color: var(--text);
+}
+
+.forecast-card img {
+  width: 44px;
+  height: auto;
+  margin: 0.25rem 0;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.forecast-condition {
+  margin: 0.35rem 0 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.temperature {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.temp-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.9;
+}
+
+/* Dashboard & detail tabs */
+.dashboard-panel {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  text-align: left;
+}
+
+.dashboard-status {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.dashboard-status.is-loading {
+  color: var(--accent);
+}
+
+.dashboard-status.is-ok {
+  color: var(--text-muted);
+}
+
+.dashboard-status.is-error {
+  color: #f87171;
+}
+
+.now-hero {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.now-location {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.now-temp {
+  margin: 0;
+  font-size: clamp(2.5rem, 8vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.now-temp-unit {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  vertical-align: super;
+  margin-left: 0.15rem;
+}
+
+.now-condition {
+  margin: 0.65rem 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.now-feels,
+.now-cloud {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.metrics-grid,
+.pollutant-grid {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.metric-item {
+  background: rgba(15, 30, 52, 0.55);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-height: 4.25rem;
+}
+
+.metric-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.metric-value {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.metric-hint {
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+.detail-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.detail-tab {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--surface-border);
+  background: rgba(15, 30, 52, 0.45);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.detail-tab:hover {
+  color: var(--text);
+  border-color: rgba(61, 217, 195, 0.35);
+}
+
+.detail-tab.is-active {
+  color: var(--bg-deep);
+  background: var(--accent);
+  border-color: transparent;
+}
+
+.tab-panels {
+  border-radius: var(--radius-md);
+  background: rgba(15, 30, 52, 0.35);
+  border: 1px solid var(--surface-border);
+  padding: 1rem 1rem 1.15rem;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.is-active {
+  display: block;
+}
+
+.panel-lead {
+  margin: 0 0 0.75rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.mini-stats {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--text);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.air-summary-text {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.chart-caption {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.aqi-chart {
+  height: 120px;
+  border-radius: var(--radius-sm);
+  background: rgba(10, 22, 40, 0.5);
+  border: 1px solid var(--surface-border);
+  padding: 0.5rem 0.35rem 0.35rem;
+}
+
+.aqi-chart-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2px;
+  height: 100%;
+}
+
+.aqi-bar {
+  flex: 1;
+  min-width: 4px;
+  max-width: 14px;
+  margin: 0 auto;
+  background: linear-gradient(to top, rgba(61, 217, 195, 0.25), var(--accent));
+  border-radius: 3px 3px 0 0;
+  opacity: 0.9;
+}
+
+.wind-stats,
+.sun-stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.wind-stats li,
+.sun-stats li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.wind-stats li:last-child,
+.sun-stats li:last-child {
+  border-bottom: none;
+}
+
+.panel-note {
+  margin: 0.85rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.forecast-section {
+  margin-top: 0.5rem;
+}
+
+.section-title {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.forecast-emoji {
+  margin: 0.25rem 0;
+  font-size: 2rem;
+  line-height: 1;
+}
